@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator Mockup</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+    <h1>Quote Generator Mockup</h1>
+    <br>
+    <form action="" id="user-form">
+        <label for=""><b>Model Number:</b></label><br>
+        <select id="units-list" name="units">
+            <option id="unit" value="Choose a unit">Choose a unit</option>
+            <option id="unit" value="421B989AB">421B989AB</option>
+            <option id="unit" value="421B989AC">421B989AC</option>
+            <option id="unit" value="423C819AA">423C819AA</option>
+            <option id="unit" value="256A070CA">256A070CA</option>
+        </select>
+        <br>
+        <br>
+        <p><b>Customer:</b></p>
+        <input type="radio" id="customer" name="customers" value="stagnation">
+        <label for="motion">Stagnation Inc.</label><br>
+        <input type="radio" id="customer" name="customers" value="standard">
+        <label for="standard">Standard</label><br>
+        <input type="radio" id="customer" name="customers" value="distributor">
+        <label for="distributor">Distributor</label><br>
+        <br>
+        <label for=""><b>Quantity:</b></label>
+        <input id="quantity" type="text" placeholder="Quantity" required><br><br>
+        <button>Submit</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <div class="quote-container">
+        <table>
+            <tr>
+                <th>Model</th>
+                <th class="description-header">Description</th>
+                <th>Unit Price</th>
+                <th>Total Quote Price</th>
+                <th>Lead Time</th>
+            </tr>
+            <tr>
+                <td><span class="model"></span></td>
+                <td><span class="description"></span></td>
+                <td><span class="unit-price"></span></td>
+                <td><span class="total-quote-price"></span></td>
+                <td><span class="leadtime">Update Lead Time accordingly</span></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -7,21 +7,36 @@ let description = document.querySelector(".description");
 let unitPrice = document.querySelector(".unit-price");
 let totalQuotePrice = document.querySelector(".total-quote-price");
 let guitarImage = document.querySelector(".guitar-image");
+const unitsList = document.querySelector("#units-list");
+
+window.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const res = await fetch("data.json")
+        const data = await res.json();
+        let optionsMap = "";
+        for (let i = 0; i < data.length; i++) {
+            optionsMap += `<option id="unit" value="${data[i].model}">${data[i].model}</option>`
+        }
+        unitsList.innerHTML = optionsMap;
+    } catch {
+        alert("An error has occurred.")
+    }
+})
+
+
+
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
     try {
         const res = await fetch("data.json")
         const data = await res.json();
-   
-        console.log(data)   
-        console.log(data[0].model) 
         let unitName = document.forms["user-form"].units.value;
-    let customerType = document.forms["user-form"].customers.value;
-    let desiredQuantity = quantity.value;
-    generateQuotePrice(data, unitName, customerType, desiredQuantity);
+        let customerType = document.forms["user-form"].customers.value;
+        let desiredQuantity = quantity.value;
+        generateQuotePrice(data, unitName, customerType, desiredQuantity);
     } catch {
-       alert("An error has occurred.")
+        alert("An error has occurred.")
     }
 })
 
@@ -32,11 +47,11 @@ function generateQuotePrice(data, unitName, customerType, desiredQuantity) {
     for (let i = 0; i < data.length; i++) {
         if (data[i].model == unitName) {
             chosenUnit = data[i].model;
-            if (customerType == 'standard'){
+            if (customerType == 'standard') {
                 pricePerUnit = data[i].standard_price;
-            } else if (customerType == 'distributor'){
+            } else if (customerType == 'distributor') {
                 pricePerUnit = data[i].distributor_price;
-            } 
+            }
         }
     }
     totalQuoteForUnit = (pricePerUnit * desiredQuantity).toFixed(2);
@@ -47,28 +62,28 @@ function generateQuotePrice(data, unitName, customerType, desiredQuantity) {
     renderImage(data, chosenUnit)
 }
 
-function renderQuotedUnitName(chosenUnit){
-    model.innerHTML= chosenUnit;
+function renderQuotedUnitName(chosenUnit) {
+    model.innerHTML = chosenUnit;
 }
 
-function renderQuotedUnitDescription(data, chosenUnit){
+function renderQuotedUnitDescription(data, chosenUnit) {
     let descriptionText = "";
-    for(let i = 0; i < data.length; i++){
-        if(data[i].model == chosenUnit){
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].model == chosenUnit) {
             descriptionText = data[i].description;
         }
     }
     description.innerHTML = descriptionText;
 }
 
-function renderTotalQuotePrice(totalQuoteForUnit){
-    totalQuotePrice.textContent= `$${totalQuoteForUnit.toFixed(2)}`;
+function renderTotalQuotePrice(totalQuoteForUnit) {
+    totalQuotePrice.textContent = `$${totalQuoteForUnit.toFixed(2)}`;
 }
 
-function renderImage(data, chosenUnit){
+function renderImage(data, chosenUnit) {
     let imageSrc = "";
-    for(let i = 0; i < data.length; i++){
-        if(data[i].model == chosenUnit){
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].model == chosenUnit) {
             imageSrc = data[i].image_path;
         }
     }

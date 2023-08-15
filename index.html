@@ -15,21 +15,19 @@
     <form action="" id="user-form">
         <label for=""><b>Model Number:</b></label><br>
         <select id="units-list" name="units">
-            <option id="unit" value="Choose a unit">Choose a unit</option>
-            <option id="unit" value="421B989AB">421B989AB</option>
-            <option id="unit" value="421B989AC">421B989AC</option>
-            <option id="unit" value="423C819AA">423C819AA</option>
-            <option id="unit" value="256A070CA">256A070CA</option>
+            <option id="unit" value="Choose a unit">Choose a model</option>
+            <option id="unit" value="JBM9999">JBM9999</option>
+            <option id="unit" value="JBM10FX">JBM10FX</option>
+            <option id="unit" value="JBM27">JBM27</option>
+            <option id="unit" value="MAR10">MAR10</option>
         </select>
         <br>
         <br>
         <p><b>Customer:</b></p>
-        <input type="radio" id="customer" name="customers" value="stagnation">
-        <label for="motion">Stagnation Inc.</label><br>
         <input type="radio" id="customer" name="customers" value="standard">
         <label for="standard">Standard</label><br>
         <input type="radio" id="customer" name="customers" value="distributor">
-        <label for="distributor">Distributor</label><br>
+        <label for="distributor">Distributor (Sweetwater, Musician's Friend)</label><br>
         <br>
         <label for=""><b>Quantity:</b></label>
         <input id="quantity" type="text" placeholder="Quantity" required><br><br>
@@ -45,14 +43,14 @@
                 <th class="description-header">Description</th>
                 <th>Unit Price</th>
                 <th>Total Quote Price</th>
-                <th>Lead Time</th>
+                <th>Image</th>
             </tr>
             <tr>
                 <td><span class="model"></span></td>
                 <td><span class="description"></span></td>
                 <td><span class="unit-price"></span></td>
                 <td><span class="total-quote-price"></span></td>
-                <td><span class="leadtime">Update Lead Time accordingly</span></td>
+                <td><img class="guitar-image"></img></td>
             </tr>
         </table>
     </div>

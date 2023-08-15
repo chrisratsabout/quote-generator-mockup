@@ -6,6 +6,7 @@ let model = document.querySelector(".model");
 let description = document.querySelector(".description");
 let unitPrice = document.querySelector(".unit-price");
 let totalQuotePrice = document.querySelector(".total-quote-price");
+let guitarImage = document.querySelector(".guitar-image");
 
 
 form.addEventListener("submit", function (e) {
@@ -24,9 +25,7 @@ function generateQuotePrice(unitName, customerType, desiredQuantity) {
     for (let i = 0; i < units.length; i++) {
         if (units[i].name == unitName) {
             chosenUnit = units[i].name;
-            if(customerType == 'stagnation'){
-                pricePerUnit = units[i].stagnation;
-            } else if (customerType == 'standard'){
+            if (customerType == 'standard'){
                 pricePerUnit = units[i].standard;
             } else if (customerType == 'distributor'){
                 pricePerUnit = units[i].distributor;
@@ -41,6 +40,7 @@ function generateQuotePrice(unitName, customerType, desiredQuantity) {
     renderQuotedUnitDescription(chosenUnit);
     renderQuotedPricePerUnit(pricePerUnit);
     renderTotalQuotePrice(totalQuoteForUnit);
+    renderImage(chosenUnit)
 }
 
 function renderQuotedUnitName(chosenUnit){
@@ -65,33 +65,43 @@ function renderTotalQuotePrice(totalQuoteForUnit){
     totalQuotePrice.textContent= `$${totalQuoteForUnit.toFixed(2)}`;
 }
 
+function renderImage(chosenUnit){
+    let imageSrc = "";
+    for(let i = 0; i < units.length; i++){
+        if(units[i].name == chosenUnit){
+            imageSrc = units[i].img;
+        }
+    }
+    guitarImage.setAttribute("src", imageSrc);
+}
+
 const units = [
     {
-        name: "421B989AB",
-        description: "DOUBLE EXTENSION, KEYWAY",
-        stagnation: 322.45,
-        standard: 229.42,
-        distributor: 200.57
+        name: "JBM9999",
+        description: "Ibanez Jake Bowen Signature JBM9999 Electric Guitar - Azure Metallic Matte. Solidbody Electric Guitar, Signature, with Basswood Body, Maple/Walnut Neck, Ebony Fingerboard, and 2 Humbucking Pickups - Azure Metallic Matte",
+        standard: 3499.99,
+        distributor: 3299.99,
+        img: "images/jbm9999.png"
     },
     {
-        name: "421B989AC",
-        description: "SINGLE EXTENSION, WOODRUFF KEY",
-        stagnation: 312.32,
-        standard: 219.82,
-        distributor: 194.83
+        name: "JBM10FX",
+        description: "Ibanez Jake Bowen Signature JBM10FX - Pearl White Matte. Solidbody Electric Guitar with Nyatoh Body, Maple Top, Maple Neck, Rosewood Fretboard, and 2 Humbucking Pickups - Pearl White Matte",
+        standard: 1299.99,
+        distributor: 1099.99,
+        img: "images/jbm10fx.png"
     },
     {
-        name: "423C819AA",
-        description: "COMUTATOR ENDSHIELD",
-        stagnation: 132.98,
-        standard: 129.18,
-        distributor: 102.36
+        name: "JBM27",
+        description: "Ibanez Jake Bowen Signature JBM27 - Black. 7-string Solidbody Electric Guitar with Mahogany Body, Maple Top, 3-pc Maple Neck, Jatoba Fretboard, and 2 Humbucking Pickups - Black",
+        standard: 1599.99,
+        distributor: 1399.99,
+        img: "images/jbm27.png"
     },
     {
-        name: "256A070CA",
-        description: "COMPLETE ASSEMBLED UNIT",
-        stagnation: 3215.46,
-        standard: 3085.78,
-        distributor: 2866.21
+        name: "MAR10",
+        description: "Ibanez Mario Camarena (Chon) Signature MAR10 - Lavender Metallic Matte. Solidbody Electric Guitar with Basswood Body, Roasted Maple Neck and Fingerboard, HSS Pickups, and Tremolo Bridge - Lavender Metallic Matte",
+        standard: 1699.99,
+        distributor: 1499.99,
+        img: "images/mar10.png"
     }
 ]

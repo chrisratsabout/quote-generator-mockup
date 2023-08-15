@@ -103,5 +103,26 @@ const units = [
         standard: 1699.99,
         distributor: 1499.99,
         img: "images/mar10.png"
+    },
+    {
+        name: "M8M",
+        description: "Ibanez Mårten Hagström Signature M8M Electric Guitar - Weathered Black. 8-string Solidbody Electric Guitar, Signature, with Alder Body, Maple/Jatoba Neck, Rosewood Fingerboard, and 1 Humbucking Pickup - Weathered Black ",
+        standard: 6199.99,
+        distributor: 5999.99,
+        img: "images/m8m.png"
+    },
+    {
+        name: "M80M",
+        description: "Ibanez Meshuggah Signature M80M - Weathered Black. 8-string Solidbody Electric Guitar with Ash Body, 5-pc Maple/Walnut Neck, Rosewood Fingerboard, and 1 Humbucking Pickup - Weathered Black",
+        standard: 1699.99,
+        distributor: 1499.99,
+        img: "images/m80m.png"
+    },
+    {
+        name: "",
+        description: "",
+        standard: 1699.99,
+        distributor: 1499.99,
+        img: "images/.png"
     }
 ]

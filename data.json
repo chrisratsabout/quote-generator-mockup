@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "model": "JBM9999",
+        "description": "Ibanez Jake Bowen Signature JBM9999 Electric Guitar - Azure Metallic Matte. Solidbody Electric Guitar, Signature, with Basswood Body, Maple/Walnut Neck, Ebony Fingerboard, and 2 Humbucking Pickups - Azure Metallic Matte",
+        "standard_price": "3499.99",
+        "distributor_price": "3299.99",
+        "image_path": "images/jbm9999.png"
+    },
+    {
+        "id": 2,
+        "model": "JBM10FX",
+        "description": "Ibanez Jake Bowen Signature JBM10FX - Pearl White Matte. Solidbody Electric Guitar with Nyatoh Body, Maple Top, Maple Neck, Rosewood Fretboard, and 2 Humbucking Pickups - Pearl White Matte",
+        "standard_price": "1299.99",
+        "distributor_price": "1099.99",
+        "image_path": "images/jbm10fx.png"
+    },
+    {
+        "id": 3,
+        "model": "JBM27",
+        "description": "Ibanez Jake Bowen Signature JBM27 - Black. 7-string Solidbody Electric Guitar with Mahogany Body, Maple Top, 3-pc Maple Neck, Jatoba Fretboard, and 2 Humbucking Pickups - Black",
+        "standard_price": "1599.99",
+        "distributor_price": "1399.99",
+        "image_path": "images/jbm27.png"
+    },
+    {
+        "id": 4,
+        "model": "MAR10",
+        "description": "Ibanez Mario Camarena (Chon) Signature MAR10 - Lavender Metallic Matte. Solidbody Electric Guitar with Basswood Body, Roasted Maple Neck and Fingerboard, HSS Pickups, and Tremolo Bridge - Lavender Metallic Matte",
+        "standard_price": "1699.99",
+        "distributor_price": "1499.99",
+        "image_path": "images/mar10.png"
+    },
+    {
+        "id": 5,
+        "model": "M8M",
+        "description": "Ibanez Mårten Hagström Signature M8M Electric Guitar - Weathered Black. 8-string Solidbody Electric Guitar, Signature, with Alder Body, Maple/Jatoba Neck, Rosewood Fingerboard, and 1 Humbucking Pickup - Weathered Black",
+        "standard_price": "6199.99",
+        "distributor_price": "5999.99",
+        "image_path": "images/m8m.png"
+    },
+    {
+        "id": 6,
+        "model": "M80M",
+        "description": "Ibanez Meshuggah Signature M80M - Weathered Black. 8-string Solidbody Electric Guitar with Ash Body, 5-pc Maple/Walnut Neck, Rosewood Fingerboard, and 1 Humbucking Pickup - Weathered Black",
+        "standard_price": "1699.99",
+        "distributor_price": "1499.99",
+        "image_path": "images/m80m.png"
+    }
+]

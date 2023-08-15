@@ -8,121 +8,69 @@ let unitPrice = document.querySelector(".unit-price");
 let totalQuotePrice = document.querySelector(".total-quote-price");
 let guitarImage = document.querySelector(".guitar-image");
 
-
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    let unitName = document.forms["user-form"].units.value;
+    try {
+        const res = await fetch("data.json")
+        const data = await res.json();
+   
+        console.log(data)   
+        console.log(data[0].model) 
+        let unitName = document.forms["user-form"].units.value;
     let customerType = document.forms["user-form"].customers.value;
     let desiredQuantity = quantity.value;
-    generateQuotePrice(unitName, customerType, desiredQuantity);
-
+    generateQuotePrice(data, unitName, customerType, desiredQuantity);
+    } catch {
+       alert("An error has occurred.")
+    }
 })
 
-function generateQuotePrice(unitName, customerType, desiredQuantity) {
+function generateQuotePrice(data, unitName, customerType, desiredQuantity) {
     let chosenUnit = "";
     let pricePerUnit = 0;
     let totalQuoteForUnit = 0;
-    for (let i = 0; i < units.length; i++) {
-        if (units[i].name == unitName) {
-            chosenUnit = units[i].name;
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].model == unitName) {
+            chosenUnit = data[i].model;
             if (customerType == 'standard'){
-                pricePerUnit = units[i].standard;
+                pricePerUnit = data[i].standard_price;
             } else if (customerType == 'distributor'){
-                pricePerUnit = units[i].distributor;
+                pricePerUnit = data[i].distributor_price;
             } 
         }
     }
-    totalQuoteForUnit = pricePerUnit * desiredQuantity;
-    console.log(chosenUnit);
-    console.log(pricePerUnit);
-    console.log(totalQuoteForUnit);
+    totalQuoteForUnit = (pricePerUnit * desiredQuantity).toFixed(2);
+    unitPrice.textContent = `$${pricePerUnit}`;
+    totalQuotePrice.textContent = `$${totalQuoteForUnit}`
     renderQuotedUnitName(chosenUnit);
-    renderQuotedUnitDescription(chosenUnit);
-    renderQuotedPricePerUnit(pricePerUnit);
-    renderTotalQuotePrice(totalQuoteForUnit);
-    renderImage(chosenUnit)
+    renderQuotedUnitDescription(data, chosenUnit);
+    renderImage(data, chosenUnit)
 }
 
 function renderQuotedUnitName(chosenUnit){
     model.innerHTML= chosenUnit;
 }
 
-function renderQuotedUnitDescription(chosenUnit){
+function renderQuotedUnitDescription(data, chosenUnit){
     let descriptionText = "";
-    for(let i = 0; i < units.length; i++){
-        if(units[i].name == chosenUnit){
-            descriptionText = units[i].description;
+    for(let i = 0; i < data.length; i++){
+        if(data[i].model == chosenUnit){
+            descriptionText = data[i].description;
         }
     }
     description.innerHTML = descriptionText;
-}
-
-function renderQuotedPricePerUnit(pricePerUnit){
-    unitPrice.textContent= `$${pricePerUnit.toFixed(2)}`;
 }
 
 function renderTotalQuotePrice(totalQuoteForUnit){
     totalQuotePrice.textContent= `$${totalQuoteForUnit.toFixed(2)}`;
 }
 
-function renderImage(chosenUnit){
+function renderImage(data, chosenUnit){
     let imageSrc = "";
-    for(let i = 0; i < units.length; i++){
-        if(units[i].name == chosenUnit){
-            imageSrc = units[i].img;
+    for(let i = 0; i < data.length; i++){
+        if(data[i].model == chosenUnit){
+            imageSrc = data[i].image_path;
         }
     }
     guitarImage.setAttribute("src", imageSrc);
 }
-
-const units = [
-    {
-        name: "JBM9999",
-        description: "Ibanez Jake Bowen Signature JBM9999 Electric Guitar - Azure Metallic Matte. Solidbody Electric Guitar, Signature, with Basswood Body, Maple/Walnut Neck, Ebony Fingerboard, and 2 Humbucking Pickups - Azure Metallic Matte",
-        standard: 3499.99,
-        distributor: 3299.99,
-        img: "images/jbm9999.png"
-    },
-    {
-        name: "JBM10FX",
-        description: "Ibanez Jake Bowen Signature JBM10FX - Pearl White Matte. Solidbody Electric Guitar with Nyatoh Body, Maple Top, Maple Neck, Rosewood Fretboard, and 2 Humbucking Pickups - Pearl White Matte",
-        standard: 1299.99,
-        distributor: 1099.99,
-        img: "images/jbm10fx.png"
-    },
-    {
-        name: "JBM27",
-        description: "Ibanez Jake Bowen Signature JBM27 - Black. 7-string Solidbody Electric Guitar with Mahogany Body, Maple Top, 3-pc Maple Neck, Jatoba Fretboard, and 2 Humbucking Pickups - Black",
-        standard: 1599.99,
-        distributor: 1399.99,
-        img: "images/jbm27.png"
-    },
-    {
-        name: "MAR10",
-        description: "Ibanez Mario Camarena (Chon) Signature MAR10 - Lavender Metallic Matte. Solidbody Electric Guitar with Basswood Body, Roasted Maple Neck and Fingerboard, HSS Pickups, and Tremolo Bridge - Lavender Metallic Matte",
-        standard: 1699.99,
-        distributor: 1499.99,
-        img: "images/mar10.png"
-    },
-    {
-        name: "M8M",
-        description: "Ibanez Mårten Hagström Signature M8M Electric Guitar - Weathered Black. 8-string Solidbody Electric Guitar, Signature, with Alder Body, Maple/Jatoba Neck, Rosewood Fingerboard, and 1 Humbucking Pickup - Weathered Black ",
-        standard: 6199.99,
-        distributor: 5999.99,
-        img: "images/m8m.png"
-    },
-    {
-        name: "M80M",
-        description: "Ibanez Meshuggah Signature M80M - Weathered Black. 8-string Solidbody Electric Guitar with Ash Body, 5-pc Maple/Walnut Neck, Rosewood Fingerboard, and 1 Humbucking Pickup - Weathered Black",
-        standard: 1699.99,
-        distributor: 1499.99,
-        img: "images/m80m.png"
-    },
-    {
-        name: "",
-        description: "",
-        standard: 1699.99,
-        distributor: 1499.99,
-        img: "images/.png"
-    }
-]
